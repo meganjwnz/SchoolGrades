@@ -11,8 +11,11 @@ public class AverageOfAllGrades implements GradeCalculatorStrategy {
 
 	@Override
 	public double calculateGrade(List<Grade> grades) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (grades.size() == 0) {
+			return 0.0;
+		}
+		GradeCalculatorStrategy sumOfAllGrades = new SumOfAllGrades();
+		return Math.round((sumOfAllGrades.calculateGrade(grades) / grades.size()) * 10.0) / 10.0;
 	}
 
 }
