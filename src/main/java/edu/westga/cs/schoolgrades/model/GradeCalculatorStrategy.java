@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * GradeCalculatorStrategy to enforce calculations
+ * 
  * @author Megan Brown
  *
  */

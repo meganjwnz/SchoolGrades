@@ -23,7 +23,7 @@ public class DropLowestGrade implements GradeCalculatorStrategy {
 		}
 		this.gradeCalculatorStrategy = gradeCalculatorStrategy;
 	}
-	
+
 	@Override
 	public double calculateGrade(List<Grade> grades) {
 		if (grades == null) {

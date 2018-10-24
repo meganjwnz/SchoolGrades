@@ -19,7 +19,7 @@ class TestSimpleGradeConstructor {
 		SimpleGrade grade = new SimpleGrade(100);
 		assertEquals(100, grade.getValue());
 	}
-	
+
 	@Test
 	void testSetValueTo200ShouldThrowException() {
 		assertThrows(IllegalArgumentException.class, () -> {

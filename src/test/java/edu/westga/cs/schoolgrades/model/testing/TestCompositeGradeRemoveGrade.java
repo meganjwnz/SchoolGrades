@@ -35,7 +35,7 @@ class TestCompositeGradeRemoveGrade {
 		compGrade.removeGrade(s3);
 		assertEquals(1, compGrade.getGrades().size());
 	}
-	
+
 	@Test
 	void testRemoveNull() {
 		GradeCalculatorStrategy gcs = new SumOfAllGrades();

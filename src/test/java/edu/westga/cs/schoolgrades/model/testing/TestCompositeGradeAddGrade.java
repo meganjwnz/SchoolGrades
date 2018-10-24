@@ -49,7 +49,7 @@ class TestCompositeGradeAddGrade {
 		compGrade.addGrade(s5);
 		assertEquals(5, compGrade.getGrades().size());
 	}
-	
+
 	@Test
 	void testAddNull() {
 		GradeCalculatorStrategy gcs = new SumOfAllGrades();

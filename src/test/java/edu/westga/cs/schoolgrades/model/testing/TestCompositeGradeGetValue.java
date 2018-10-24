@@ -12,7 +12,7 @@ import edu.westga.cs.schoolgrades.model.SimpleGrade;
 import edu.westga.cs.schoolgrades.model.SumOfAllGrades;
 
 class TestCompositeGradeGetValue {
-	
+
 	@Test
 	void testGetValueWithOf3GradesUsingSumOfAllGrades() {
 		GradeCalculatorStrategy gcs = new SumOfAllGrades();
@@ -32,7 +32,7 @@ class TestCompositeGradeGetValue {
 		CompositeGrade compGrade = new CompositeGrade(gcs);
 		assertEquals(0, compGrade.getValue());
 	}
-	
+
 	@Test
 	void testGetValueWithOf3GradesUsingAverageOfAllGrades() {
 		GradeCalculatorStrategy gcs = new AverageOfAllGrades();
@@ -52,7 +52,7 @@ class TestCompositeGradeGetValue {
 		CompositeGrade compGrade = new CompositeGrade(gcs);
 		assertEquals(0.0, compGrade.getValue());
 	}
-	
+
 	@Test
 	void testGetValueWithOf3GradesUsingDropLowestGrade() {
 		GradeCalculatorStrategy averageCalc = new AverageOfAllGrades();

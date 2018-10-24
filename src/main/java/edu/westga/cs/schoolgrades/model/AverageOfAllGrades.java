@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Takes the sum of all the grades and averages them
+ * 
  * @author Megan Brown
  *
  */

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
 
 class TestCompositeGradeConstructor {
-	
+
 	@Test
 	void testCompositeGrade() {
 		assertThrows(IllegalArgumentException.class, () -> {
