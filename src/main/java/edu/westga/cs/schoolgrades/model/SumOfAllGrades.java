@@ -11,8 +11,14 @@ public class SumOfAllGrades implements GradeCalculatorStrategy {
 
 	@Override
 	public double calculateGrade(List<Grade> grades) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (grades == null) {
+			throw new IllegalArgumentException("There must be grades to calculate");
+		}
+		double sumOfGrades = 0.0;
+		for (Grade grade : grades) {
+			sumOfGrades += grade.getValue();
+		}
+		return sumOfGrades;
 	}
 
 }
