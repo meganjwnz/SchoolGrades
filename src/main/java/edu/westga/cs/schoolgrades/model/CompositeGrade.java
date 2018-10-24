@@ -28,5 +28,16 @@ public class CompositeGrade implements Grade {
 	public double getValue() {
 		return this.gcs.calculateGrade(this.grades);
 	}
+	
+	/**
+	 * Adds grade to arraylist
+	 * @param grade Grade to be added
+	 */
+	public void addGrade(Grade grade) {
+		if (grade == null) {
+			throw new IllegalArgumentException ("Grade must not be null");
+		}
+		this.grades.add(grade);
+	}
 
 }
