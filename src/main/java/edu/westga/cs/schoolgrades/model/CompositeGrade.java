@@ -39,5 +39,13 @@ public class CompositeGrade implements Grade {
 		}
 		this.grades.add(grade);
 	}
+	
+	/**
+	 * Lists all the grades in the arrayList
+	 * @return
+	 */
+	public List<Grade> getGrades() {
+		return this.grades;
+	}
 
 }
