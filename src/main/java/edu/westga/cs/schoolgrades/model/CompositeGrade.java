@@ -47,5 +47,16 @@ public class CompositeGrade implements Grade {
 	public List<Grade> getGrades() {
 		return this.grades;
 	}
+	
+	/**
+	 * Removes grade from arraylist
+	 * @param grade Grade to be removed
+	 */
+	public void removeGrade(Grade grade) {
+		if (grade == null) {
+			throw new IllegalArgumentException ("Grade must not be null");
+		}
+		this.grades.remove(grade);
+	}
 
 }
