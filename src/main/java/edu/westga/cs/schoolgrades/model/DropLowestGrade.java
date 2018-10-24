@@ -1,5 +1,6 @@
 package edu.westga.cs.schoolgrades.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +26,22 @@ public class DropLowestGrade implements GradeCalculatorStrategy {
 	
 	@Override
 	public double calculateGrade(List<Grade> grades) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (grades == null) {
+			throw new IllegalArgumentException("Grades must not be null");
+		}
+		if (grades.size() < 2) {
+			return gradeCalculatorStrategy.calculateGrade(grades);
+		}
+		Grade lowestGrade = grades.get(0);
+		for (Grade grade : grades) {
+			if (grade.getValue() < lowestGrade.getValue()) {
+				lowestGrade = grade;
+			}
+		}
+		List<Grade> newList = new ArrayList<Grade>(grades);
+		newList.remove(lowestGrade);
+
+		return gradeCalculatorStrategy.calculateGrade(newList);
 	}
 
 }
