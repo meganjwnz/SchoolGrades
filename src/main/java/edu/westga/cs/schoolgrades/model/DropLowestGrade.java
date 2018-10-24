@@ -9,7 +9,20 @@ import java.util.List;
  *
  */
 public class DropLowestGrade implements GradeCalculatorStrategy {
+	private GradeCalculatorStrategy gradeCalculatorStrategy;
 
+	/**
+	 * Constructor to initalize gradeCalculatorStrategy
+	 * 
+	 * @param gradeCalculatorStrategy GradeCalculatorStrategy to be used
+	 */
+	public DropLowestGrade(GradeCalculatorStrategy gradeCalculatorStrategy) {
+		if (gradeCalculatorStrategy == null) {
+			throw new IllegalArgumentException("GradeCalculator must not be null");
+		}
+		this.gradeCalculatorStrategy = gradeCalculatorStrategy;
+	}
+	
 	@Override
 	public double calculateGrade(List<Grade> grades) {
 		// TODO Auto-generated method stub
