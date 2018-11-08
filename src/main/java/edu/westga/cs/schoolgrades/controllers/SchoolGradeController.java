@@ -99,6 +99,7 @@ public class SchoolGradeController {
 	 */
 	public void quizBinding() {
 		this.quizzesSubtotal.textProperty().bindBidirectional(this.qsubtotal, new NumberStringConverter());
+		this.quizzesSubtotal.setEditable(false);
 	}
 
 	/**
@@ -107,7 +108,7 @@ public class SchoolGradeController {
 	public void homeworkBinding() {
 		this.homeworksSubtotal.textProperty().bindBidirectional(this.hsubtotal,
 				new NumberStringConverter());
-
+		this.homeworksSubtotal.setEditable(false);
 	}
 
 	/**
@@ -115,7 +116,15 @@ public class SchoolGradeController {
 	 */
 	public void examBinding() {
 		this.examsSubtotal.textProperty().bindBidirectional(this.esubtotal, new NumberStringConverter());
-
+		this.examsSubtotal.setEditable(false);
+	}
+	
+	/**
+	 * Binds the find grade text
+	 */
+	public void finalGradeTextFieldBinding() {
+		this.finalGradeTotal.textProperty().bindBidirectional(this.finalGradeResult, new NumberStringConverter());
+		this.finalGradeTotal.setEditable(false);
 	}
 	
 	/*
