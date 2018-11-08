@@ -1,7 +1,10 @@
 package edu.westga.cs.schoolgrades.controllers;
 
+import edu.westga.cs.schoolgrades.model.AverageOfAllGrades;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
+import edu.westga.cs.schoolgrades.model.DropLowestGrade;
 import edu.westga.cs.schoolgrades.model.Grade;
+import edu.westga.cs.schoolgrades.model.GradeCalculatorStrategy;
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
 import edu.westga.cs.schoolgrades.model.SumOfAllGrades;
 import javafx.beans.property.DoubleProperty;
@@ -147,6 +150,21 @@ public class SchoolGradeController {
 		}
 		this.qsubtotal.set(quizGrades.getValue());
 		return quizGrades;
+	}
+	
+	/**
+	 * Calculates the average of all homeworks
+	 * 
+	 * @return Calculation of Homework Subtotal
+	 */
+	public Grade calculateHomeworkTotal() {
+		GradeCalculatorStrategy averageOfHomeworks = new AverageOfAllGrades();
+		CompositeGrade homeworkGrades = new CompositeGrade(averageOfHomeworks);
+		for(Grade grade : this.homeworks) {
+			homeworkGrades.addGrade(grade);
+		}
+		this.hsubtotal.set(homeworkGrades.getValue());
+		return homeworkGrades;
 	}
 	
 	/*
