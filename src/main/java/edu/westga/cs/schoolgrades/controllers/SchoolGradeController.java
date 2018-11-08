@@ -1,6 +1,9 @@
 package edu.westga.cs.schoolgrades.controllers;
 
+import edu.westga.cs.schoolgrades.model.CompositeGrade;
+import edu.westga.cs.schoolgrades.model.Grade;
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
+import edu.westga.cs.schoolgrades.model.SumOfAllGrades;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
@@ -125,6 +128,25 @@ public class SchoolGradeController {
 	public void finalGradeTextFieldBinding() {
 		this.finalGradeTotal.textProperty().bindBidirectional(this.finalGradeResult, new NumberStringConverter());
 		this.finalGradeTotal.setEditable(false);
+	}
+	
+	/*
+	 * *****----------Calculations----------*****
+	 */
+	
+	/**
+	 * Calculates the sum of all quizzes
+	 * 
+	 * @return Calculation of Quiz Subtotal
+	 */
+	public Grade calculateQuizTotal() {
+		SumOfAllGrades sumOfQuizzes = new SumOfAllGrades();
+		CompositeGrade quizGrades = new CompositeGrade(sumOfQuizzes);
+		for(Grade grade : this.quizzes) {
+			quizGrades.addGrade(grade);
+		}
+		this.qsubtotal.set(quizGrades.getValue());
+		return quizGrades;
 	}
 	
 	/*
