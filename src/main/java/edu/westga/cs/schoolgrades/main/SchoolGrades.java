@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class SchoolGrades extends Application {
 
-	private static final String GUI_RESOURCE = "edu/westga/cs/schoolgrades/views/grade.fxml";
+	private static final String GUI_RESOURCE = "edu/westga/cs/schoolgrades/views/grades.fxml";
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

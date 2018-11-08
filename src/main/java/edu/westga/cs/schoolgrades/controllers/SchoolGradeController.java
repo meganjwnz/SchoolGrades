@@ -1,4 +1,4 @@
-package edu.west.ga.cs.schoolgrades.controllers;
+package edu.westga.cs.schoolgrades.controllers;
 
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
 import javafx.collections.FXCollections;
