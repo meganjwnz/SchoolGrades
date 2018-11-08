@@ -1,7 +1,6 @@
 package edu.west.ga.cs.schoolgrades.controllers;
 
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -50,6 +49,36 @@ public class SchoolGradeController {
 		this.quizzes = FXCollections.observableArrayList();
 		this.homeworks = FXCollections.observableArrayList();
 		this.exams = FXCollections.observableArrayList();
+	}
+	
+	public void initialize() {
+		this.displayQuizGrades();
+		this.displayHomeworkGrades();
+		this.displayExamGrades();
+	}
+	
+	/**
+	 * Populates quizllistview with observable list of quizzes
+	 */
+	public void displayQuizGrades() {
+		this.quizGrades.setItems(quizzes);
+		this.quizGrades.setCellFactory(new GradeManager());
+	}
+
+	/**
+	 * Populates homeworklistview with observable list of quizzes
+	 */
+	public void displayHomeworkGrades() {
+		this.homeworkGrades.setItems(homeworks);
+		this.homeworkGrades.setCellFactory(new GradeManager());
+	}
+
+	/**
+	 * Populates examlistview with observable list of quizzes
+	 */
+	public void displayExamGrades() {
+		this.examGrades.setItems(exams);
+		this.examGrades.setCellFactory(new GradeManager());
 	}
 	
 	/**
