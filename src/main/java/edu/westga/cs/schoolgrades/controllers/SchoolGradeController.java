@@ -11,6 +11,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
@@ -197,6 +198,37 @@ public class SchoolGradeController {
 		finalGrade.addGrade(exams);
 		this.finalGradeResult.set(finalGrade.getValue());
 		return finalGrade;
+	}
+	
+	/*
+	 * Menu Items
+	 */
+	
+	/**
+	 * Adds new quiz
+	 * 
+	 * @param event
+	 */
+	public void addQuiz(ActionEvent event) {
+		this.quizzes.add(new SimpleGrade(0.0));
+	}
+
+	/**
+	 * Adds new homework
+	 * 
+	 * @param event
+	 */
+	public void addHomework(ActionEvent event) {
+		this.homeworks.add(new SimpleGrade(0.0));
+	}
+
+	/**
+	 * Adds new exam
+	 * 
+	 * @param event
+	 */
+	public void addExam(ActionEvent event) {
+		this.exams.add(new SimpleGrade(0.0));
 	}
 
 	

@@ -52,9 +52,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Data">
             <items>
-              <MenuItem mnemonicParsing="false"  text="Add Quiz" />
-                  <MenuItem mnemonicParsing="false"  text="Add Homework" />
-                  <MenuItem mnemonicParsing="false"  text="Add Exam" />
+              <MenuItem mnemonicParsing="false" onAction="#addQuiz"  text="Add Quiz" />
+                  <MenuItem mnemonicParsing="false" onAction="#addHomework" text="Add Homework" />
+                  <MenuItem mnemonicParsing="false" onAction="#addExam" text="Add Exam" />
             </items>
           </Menu>
         </menus>
