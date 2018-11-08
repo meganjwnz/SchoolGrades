@@ -26,7 +26,7 @@ import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
 public class SchoolGradeController {
-	
+
 	@FXML
 	private TextField quizzesSubtotal;
 
@@ -50,16 +50,16 @@ public class SchoolGradeController {
 
 	@FXML
 	private Button recalculate;
-	
+
 	private ObservableList<SimpleGrade> quizzes;
 	private ObservableList<SimpleGrade> homeworks;
 	private ObservableList<SimpleGrade> exams;
-	
+
 	private DoubleProperty qsubtotal;
 	private DoubleProperty hsubtotal;
 	private DoubleProperty esubtotal;
 	private DoubleProperty finalGradeResult;
-	
+
 	/**
 	 * Initalizes instance variables
 	 */
@@ -67,13 +67,13 @@ public class SchoolGradeController {
 		this.quizzes = FXCollections.observableArrayList();
 		this.homeworks = FXCollections.observableArrayList();
 		this.exams = FXCollections.observableArrayList();
-		
+
 		this.qsubtotal = new SimpleDoubleProperty();
 		this.hsubtotal = new SimpleDoubleProperty();
 		this.esubtotal = new SimpleDoubleProperty();
 		this.finalGradeResult = new SimpleDoubleProperty();
 	}
-	
+
 	public void initialize() {
 		this.displayQuizGrades();
 		this.displayHomeworkGrades();
@@ -83,7 +83,7 @@ public class SchoolGradeController {
 		this.examBinding();
 		this.finalGradeBinding();
 	}
-	
+
 	/**
 	 * Populates quizGrades with observable list of quizzes
 	 */
@@ -107,7 +107,7 @@ public class SchoolGradeController {
 		this.examGrades.setItems(exams);
 		this.examGrades.setCellFactory(new GradeManager());
 	}
-	
+
 	/**
 	 * binds the quiz subtotal text
 	 */
@@ -120,8 +120,7 @@ public class SchoolGradeController {
 	 * binds the homework subtotal text
 	 */
 	public void homeworkBinding() {
-		this.homeworksSubtotal.textProperty().bindBidirectional(this.hsubtotal,
-				new NumberStringConverter());
+		this.homeworksSubtotal.textProperty().bindBidirectional(this.hsubtotal, new NumberStringConverter());
 		this.homeworksSubtotal.setEditable(false);
 	}
 
@@ -132,7 +131,7 @@ public class SchoolGradeController {
 		this.examsSubtotal.textProperty().bindBidirectional(this.esubtotal, new NumberStringConverter());
 		this.examsSubtotal.setEditable(false);
 	}
-	
+
 	/**
 	 * Binds the find grade text
 	 */
@@ -140,11 +139,11 @@ public class SchoolGradeController {
 		this.finalGradeTotal.textProperty().bindBidirectional(this.finalGradeResult, new NumberStringConverter());
 		this.finalGradeTotal.setEditable(false);
 	}
-	
+
 	/*
 	 * *****----------Calculations----------*****
 	 */
-	
+
 	/**
 	 * Calculates the sum of all quizzes
 	 * 
@@ -153,13 +152,13 @@ public class SchoolGradeController {
 	public Grade calculateQuizTotal() {
 		SumOfAllGrades sumOfQuizzes = new SumOfAllGrades();
 		CompositeGrade quizGrades = new CompositeGrade(sumOfQuizzes);
-		for(Grade grade : this.quizzes) {
+		for (Grade grade : this.quizzes) {
 			quizGrades.addGrade(grade);
 		}
 		this.qsubtotal.set(quizGrades.getValue());
 		return quizGrades;
 	}
-	
+
 	/**
 	 * Calculates the average of all homeworks
 	 * 
@@ -168,13 +167,13 @@ public class SchoolGradeController {
 	public Grade calculateHomeworkTotal() {
 		GradeCalculatorStrategy averageOfHomeworks = new DropLowestGrade(new AverageOfAllGrades());
 		CompositeGrade homeworkGrades = new CompositeGrade(averageOfHomeworks);
-		for(Grade grade : this.homeworks) {
+		for (Grade grade : this.homeworks) {
 			homeworkGrades.addGrade(grade);
 		}
 		this.hsubtotal.set(homeworkGrades.getValue());
 		return homeworkGrades;
 	}
-	
+
 	/**
 	 * Calculates the average of all exams
 	 * 
@@ -183,13 +182,13 @@ public class SchoolGradeController {
 	public Grade calculateExamTotal() {
 		AverageOfAllGrades averageOfExams = new AverageOfAllGrades();
 		CompositeGrade examGrades = new CompositeGrade(averageOfExams);
-		for(Grade grade : this.exams) {
+		for (Grade grade : this.exams) {
 			examGrades.addGrade(grade);
 		}
 		this.esubtotal.set(examGrades.getValue());
 		return examGrades;
 	}
-	
+
 	/**
 	 * Calculates the final grade
 	 * 
@@ -206,7 +205,7 @@ public class SchoolGradeController {
 		this.finalGradeResult.set(finalGrade.getValue());
 		return finalGrade;
 	}
-	
+
 	/**
 	 * Recalculates all totals
 	 */
@@ -218,11 +217,11 @@ public class SchoolGradeController {
 			}
 		});
 	}
-	
+
 	/*
 	 * Menu Items
 	 */
-	
+
 	/**
 	 * Adds new quiz
 	 * 
@@ -250,11 +249,10 @@ public class SchoolGradeController {
 		this.exams.add(new SimpleGrade(0.0));
 	}
 
-	
 	/*
 	 * **---------------------- Helper Class ---------------- **
 	 */
-	
+
 	/**
 	 * Manages the cell factory of the grades. Converts grades into string so that
 	 * they can be displayed in the list pane. Based of Babble cell factory
