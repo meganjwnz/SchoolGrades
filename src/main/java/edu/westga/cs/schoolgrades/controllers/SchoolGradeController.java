@@ -2,6 +2,7 @@ package edu.westga.cs.schoolgrades.controllers;
 
 import edu.westga.cs.schoolgrades.model.AverageOfAllGrades;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
+import edu.westga.cs.schoolgrades.model.DropLowestGrade;
 import edu.westga.cs.schoolgrades.model.Grade;
 import edu.westga.cs.schoolgrades.model.GradeCalculatorStrategy;
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
@@ -165,7 +166,7 @@ public class SchoolGradeController {
 	 * @return Calculation of Homework Subtotal
 	 */
 	public Grade calculateHomeworkTotal() {
-		GradeCalculatorStrategy averageOfHomeworks = new AverageOfAllGrades();
+		GradeCalculatorStrategy averageOfHomeworks = new DropLowestGrade(new AverageOfAllGrades());
 		CompositeGrade homeworkGrades = new CompositeGrade(averageOfHomeworks);
 		for(Grade grade : this.homeworks) {
 			homeworkGrades.addGrade(grade);
