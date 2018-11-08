@@ -274,7 +274,8 @@ public class SchoolGradeController {
 
 				@Override
 				public SimpleGrade fromString(final String string) {
-					return null;
+					double grade = Double.parseDouble(string);
+					return new SimpleGrade(grade);
 				}
 			});
 			return cellFactory;
