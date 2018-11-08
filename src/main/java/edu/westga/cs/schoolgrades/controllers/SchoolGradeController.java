@@ -77,6 +77,10 @@ public class SchoolGradeController {
 		this.displayQuizGrades();
 		this.displayHomeworkGrades();
 		this.displayExamGrades();
+		this.quizBinding();
+		this.homeworkBinding();
+		this.examBinding();
+		this.finalGradeBinding();
 	}
 	
 	/**
@@ -131,7 +135,7 @@ public class SchoolGradeController {
 	/**
 	 * Binds the find grade text
 	 */
-	public void finalGradeTextFieldBinding() {
+	public void finalGradeBinding() {
 		this.finalGradeTotal.textProperty().bindBidirectional(this.finalGradeResult, new NumberStringConverter());
 		this.finalGradeTotal.setEditable(false);
 	}

@@ -36,7 +36,7 @@
          <tooltip>
             <Tooltip text="Exam Subtotal" />
          </tooltip></TextField>
-      <TextField fx:id="finalGradeTotal" layoutX="80.0" layoutY="253.0"  #finalGradeBinding prefHeight="25.0" prefWidth="105.0">
+      <TextField fx:id="finalGradeTotal" layoutX="80.0" layoutY="253.0" onAction="#finalGradeBinding" prefHeight="25.0" prefWidth="105.0">
          <tooltip>
             <Tooltip text="Final Grade" />
          </tooltip></TextField>
@@ -52,7 +52,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Data">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#addQuiz"  text="Add Quiz" />
+              <MenuItem mnemonicParsing="false" onAction="#addQuiz" text="Add Quiz" />
                   <MenuItem mnemonicParsing="false" onAction="#addHomework" text="Add Homework" />
                   <MenuItem mnemonicParsing="false" onAction="#addExam" text="Add Exam" />
             </items>
@@ -61,3 +61,4 @@
       </MenuBar>
    </children>
 </AnchorPane>
+
