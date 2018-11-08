@@ -12,12 +12,14 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -198,6 +200,18 @@ public class SchoolGradeController {
 		finalGrade.addGrade(exams);
 		this.finalGradeResult.set(finalGrade.getValue());
 		return finalGrade;
+	}
+	
+	/**
+	 * Recalculates all totals
+	 */
+	public void recalculate() {
+		this.recalculate.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				SchoolGradeController.this.calculateFinalGrade();
+			}
+		});
 	}
 	
 	/*

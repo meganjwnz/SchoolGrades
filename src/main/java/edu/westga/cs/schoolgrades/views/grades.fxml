@@ -40,7 +40,7 @@
          <tooltip>
             <Tooltip text="Final Grade" />
          </tooltip></TextField>
-      <Button fx:id="recalculate" layoutX="190.0" layoutY="253.0" mnemonicParsing="false"  text="Recalculate" />
+      <Button fx:id="recalculate" layoutX="190.0" layoutY="253.0" mnemonicParsing="false" onAction="#recalculate" onMouseClicked="#recalculate" text="Recalculate" />
       <Label layoutX="17.0" layoutY="27.0" text="Quizzes" />
       <Label layoutX="122.0" layoutY="27.0" text="Homeworks" />
       <Label layoutX="253.0" layoutY="27.0" text="Exams" />
