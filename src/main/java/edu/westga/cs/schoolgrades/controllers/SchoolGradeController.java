@@ -6,6 +6,7 @@ import edu.westga.cs.schoolgrades.model.Grade;
 import edu.westga.cs.schoolgrades.model.GradeCalculatorStrategy;
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
 import edu.westga.cs.schoolgrades.model.SumOfAllGrades;
+import edu.westga.cs.schoolgrades.model.WeightedGrade;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
@@ -179,6 +180,23 @@ public class SchoolGradeController {
 		}
 		this.esubtotal.set(examGrades.getValue());
 		return examGrades;
+	}
+	
+	/**
+	 * Calculates the final grade
+	 * 
+	 * @return Calculation of Final Grade
+	 */
+	public Grade calculateFinalGrade() {
+		WeightedGrade quizzes = new WeightedGrade(this.calculateQuizTotal(), 0.2);
+		WeightedGrade homeworks = new WeightedGrade(this.calculateHomeworkTotal(), 0.3);
+		WeightedGrade exams = new WeightedGrade(this.calculateExamTotal(), 0.5);
+		CompositeGrade finalGrade = new CompositeGrade(new SumOfAllGrades());
+		finalGrade.addGrade(quizzes);
+		finalGrade.addGrade(homeworks);
+		finalGrade.addGrade(exams);
+		this.finalGradeResult.set(finalGrade.getValue());
+		return finalGrade;
 	}
 
 	
