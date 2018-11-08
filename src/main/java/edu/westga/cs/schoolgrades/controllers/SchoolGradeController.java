@@ -2,7 +2,6 @@ package edu.westga.cs.schoolgrades.controllers;
 
 import edu.westga.cs.schoolgrades.model.AverageOfAllGrades;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
-import edu.westga.cs.schoolgrades.model.DropLowestGrade;
 import edu.westga.cs.schoolgrades.model.Grade;
 import edu.westga.cs.schoolgrades.model.GradeCalculatorStrategy;
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
@@ -166,6 +165,22 @@ public class SchoolGradeController {
 		this.hsubtotal.set(homeworkGrades.getValue());
 		return homeworkGrades;
 	}
+	
+	/**
+	 * Calculates the average of all exams
+	 * 
+	 * @return Calculation of Exam Subtotal
+	 */
+	public Grade calculateExamTotal() {
+		AverageOfAllGrades averageOfExams = new AverageOfAllGrades();
+		CompositeGrade examGrades = new CompositeGrade(averageOfExams);
+		for(Grade grade : this.exams) {
+			examGrades.addGrade(grade);
+		}
+		this.esubtotal.set(examGrades.getValue());
+		return examGrades;
+	}
+
 	
 	/*
 	 * **---------------------- Helper Class ---------------- **
