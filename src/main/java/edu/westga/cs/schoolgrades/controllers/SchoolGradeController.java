@@ -1,6 +1,8 @@
 package edu.westga.cs.schoolgrades.controllers;
 
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 public class SchoolGradeController {
 	
@@ -42,6 +45,11 @@ public class SchoolGradeController {
 	private ObservableList<SimpleGrade> homeworks;
 	private ObservableList<SimpleGrade> exams;
 	
+	private DoubleProperty qsubtotal;
+	private DoubleProperty hsubtotal;
+	private DoubleProperty esubtotal;
+	private DoubleProperty finalGradeResult;
+	
 	/**
 	 * Initalizes instance variables
 	 */
@@ -49,6 +57,11 @@ public class SchoolGradeController {
 		this.quizzes = FXCollections.observableArrayList();
 		this.homeworks = FXCollections.observableArrayList();
 		this.exams = FXCollections.observableArrayList();
+		
+		this.qsubtotal = new SimpleDoubleProperty();
+		this.hsubtotal = new SimpleDoubleProperty();
+		this.esubtotal = new SimpleDoubleProperty();
+		this.finalGradeResult = new SimpleDoubleProperty();
 	}
 	
 	public void initialize() {
@@ -58,7 +71,7 @@ public class SchoolGradeController {
 	}
 	
 	/**
-	 * Populates quizllistview with observable list of quizzes
+	 * Populates quizGrades with observable list of quizzes
 	 */
 	public void displayQuizGrades() {
 		this.quizGrades.setItems(quizzes);
@@ -66,7 +79,7 @@ public class SchoolGradeController {
 	}
 
 	/**
-	 * Populates homeworklistview with observable list of quizzes
+	 * Populates homeworkGrades with observable list of quizzes
 	 */
 	public void displayHomeworkGrades() {
 		this.homeworkGrades.setItems(homeworks);
@@ -74,12 +87,40 @@ public class SchoolGradeController {
 	}
 
 	/**
-	 * Populates examlistview with observable list of quizzes
+	 * Populates examGrades with observable list of quizzes
 	 */
 	public void displayExamGrades() {
 		this.examGrades.setItems(exams);
 		this.examGrades.setCellFactory(new GradeManager());
 	}
+	
+	/**
+	 * binds the quiz subtotal text
+	 */
+	public void quizBinding() {
+		this.quizzesSubtotal.textProperty().bindBidirectional(this.qsubtotal, new NumberStringConverter());
+	}
+
+	/**
+	 * binds the homework subtotal text
+	 */
+	public void homeworkBinding() {
+		this.homeworksSubtotal.textProperty().bindBidirectional(this.hsubtotal,
+				new NumberStringConverter());
+
+	}
+
+	/**
+	 * Binds the exam subtotal text
+	 */
+	public void examBinding() {
+		this.examsSubtotal.textProperty().bindBidirectional(this.esubtotal, new NumberStringConverter());
+
+	}
+	
+	/*
+	 * **---------------------- Helper Class ---------------- **
+	 */
 	
 	/**
 	 * Manages the cell factory of the grades. Converts grades into string so that

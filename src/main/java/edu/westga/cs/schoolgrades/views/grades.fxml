@@ -24,19 +24,19 @@
          <tooltip>
             <Tooltip text="List of Exam Grades" />
          </tooltip></ListView>
-      <TextField fx:id="quizzesSubtotal" layoutX="14.0" layoutY="221.0" prefHeight="25.0" prefWidth="90.0">
+      <TextField fx:id="quizzesSubtotal" layoutX="14.0" layoutY="221.0" onAction="#quizBinding" prefHeight="25.0" prefWidth="90.0">
          <tooltip>
             <Tooltip text="Quiz Subtotal" />
          </tooltip></TextField>
-      <TextField fx:id="homeworksSubtotal" layoutX="122.0" layoutY="221.0"  prefHeight="25.0" prefWidth="105.0">
+      <TextField fx:id="homeworksSubtotal" layoutX="122.0" layoutY="221.0" onAction="#homeworkBinding" prefHeight="25.0" prefWidth="105.0">
          <tooltip>
             <Tooltip text="Homework Subtotal" />
          </tooltip></TextField>
-      <TextField fx:id="examsSubtotal" layoutX="255.0" layoutY="221.0"  prefHeight="25.0" prefWidth="106.0">
+      <TextField fx:id="examsSubtotal" layoutX="255.0" layoutY="221.0" onAction="#examBinding" prefHeight="25.0" prefWidth="106.0">
          <tooltip>
             <Tooltip text="Exam Subtotal" />
          </tooltip></TextField>
-      <TextField fx:id="finalGradeTotal" layoutX="80.0" layoutY="253.0"  prefHeight="25.0" prefWidth="105.0">
+      <TextField fx:id="finalGradeTotal" layoutX="80.0" layoutY="253.0"  #finalGradeBinding prefHeight="25.0" prefWidth="105.0">
          <tooltip>
             <Tooltip text="Final Grade" />
          </tooltip></TextField>
