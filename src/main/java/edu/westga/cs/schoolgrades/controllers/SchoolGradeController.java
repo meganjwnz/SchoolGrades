@@ -1,12 +1,12 @@
 package edu.westga.cs.schoolgrades.controllers;
 
-import edu.westga.cs.schoolgrades.model.AverageOfAllGrades;
+import edu.westga.cs.schoolgrades.model.AverageOfGradesStrategy;
 import edu.westga.cs.schoolgrades.model.CompositeGrade;
-import edu.westga.cs.schoolgrades.model.DropLowestGrade;
+import edu.westga.cs.schoolgrades.model.DropLowestStrategy;
 import edu.westga.cs.schoolgrades.model.Grade;
-import edu.westga.cs.schoolgrades.model.GradeCalculatorStrategy;
+import edu.westga.cs.schoolgrades.model.GradeCalculationStrategy;
 import edu.westga.cs.schoolgrades.model.SimpleGrade;
-import edu.westga.cs.schoolgrades.model.SumOfAllGrades;
+import edu.westga.cs.schoolgrades.model.SumOfGradesStrategy;
 import edu.westga.cs.schoolgrades.model.WeightedGrade;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -150,10 +150,10 @@ public class SchoolGradeController {
 	 * @return Calculation of Quiz Subtotal
 	 */
 	public Grade calculateQuizTotal() {
-		SumOfAllGrades sumOfQuizzes = new SumOfAllGrades();
+		SumOfGradesStrategy sumOfQuizzes = new SumOfGradesStrategy();
 		CompositeGrade quizGrades = new CompositeGrade(sumOfQuizzes);
 		for (Grade grade : this.quizzes) {
-			quizGrades.addGrade(grade);
+			quizGrades.add(grade);
 		}
 		this.qsubtotal.set(quizGrades.getValue());
 		return quizGrades;
@@ -165,10 +165,10 @@ public class SchoolGradeController {
 	 * @return Calculation of Homework Subtotal
 	 */
 	public Grade calculateHomeworkTotal() {
-		GradeCalculatorStrategy averageOfHomeworks = new DropLowestGrade(new AverageOfAllGrades());
+		GradeCalculationStrategy averageOfHomeworks = new DropLowestStrategy(new AverageOfGradesStrategy());
 		CompositeGrade homeworkGrades = new CompositeGrade(averageOfHomeworks);
 		for (Grade grade : this.homeworks) {
-			homeworkGrades.addGrade(grade);
+			homeworkGrades.add(grade);
 		}
 		this.hsubtotal.set(homeworkGrades.getValue());
 		return homeworkGrades;
@@ -180,10 +180,10 @@ public class SchoolGradeController {
 	 * @return Calculation of Exam Subtotal
 	 */
 	public Grade calculateExamTotal() {
-		AverageOfAllGrades averageOfExams = new AverageOfAllGrades();
+		AverageOfGradesStrategy averageOfExams = new AverageOfGradesStrategy();
 		CompositeGrade examGrades = new CompositeGrade(averageOfExams);
 		for (Grade grade : this.exams) {
-			examGrades.addGrade(grade);
+			examGrades.add(grade);
 		}
 		this.esubtotal.set(examGrades.getValue());
 		return examGrades;
@@ -198,10 +198,10 @@ public class SchoolGradeController {
 		WeightedGrade quizzes = new WeightedGrade(this.calculateQuizTotal(), 0.2);
 		WeightedGrade homeworks = new WeightedGrade(this.calculateHomeworkTotal(), 0.3);
 		WeightedGrade exams = new WeightedGrade(this.calculateExamTotal(), 0.5);
-		CompositeGrade finalGrade = new CompositeGrade(new SumOfAllGrades());
-		finalGrade.addGrade(quizzes);
-		finalGrade.addGrade(homeworks);
-		finalGrade.addGrade(exams);
+		CompositeGrade finalGrade = new CompositeGrade(new SumOfGradesStrategy());
+		finalGrade.add(quizzes);
+		finalGrade.add(homeworks);
+		finalGrade.add(exams);
 		this.finalGradeResult.set(finalGrade.getValue());
 		return finalGrade;
 	}

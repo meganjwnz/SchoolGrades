@@ -1,12 +1,16 @@
 package edu.westga.cs.schoolgrades.model;
 
 /**
- * Grade interface to get grade value
+ * Represents a Grade as a retrievable value.
  * 
- * @author Megan Brown
+ * @author lewisb
  *
  */
 public interface Grade {
-
-	public double getValue();
+	/**
+	 * The value of this grade.
+	 * 
+	 * @return the value of this grade.
+	 */
+	double getValue();
 }
