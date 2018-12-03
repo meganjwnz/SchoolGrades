@@ -18,9 +18,9 @@ public class TestCompositeGradeAdd {
 	@BeforeEach
 	public void setup() {
 		composite = new CompositeGrade(mock(SumOfGradesStrategy.class));
-		mockGrade0 = mock(SimpleGrade.class);
-		mockGrade1 = mock(SimpleGrade.class);
-		mockGrade2 = mock(SimpleGrade.class);
+		mockGrade0 = mock(Grade.class);
+		mockGrade1 = mock(Grade.class);
+		mockGrade2 = mock(Grade.class);
 	}
 	
 	@Test

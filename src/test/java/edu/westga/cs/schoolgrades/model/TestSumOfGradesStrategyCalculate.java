@@ -49,7 +49,7 @@ public class TestSumOfGradesStrategyCalculate {
 	@Test
 	public void shouldCalculateSumOfOneGrades() {
 		grades.add(mockGrade0);
-		assertEquals(mockGrade0.getValue(), strategy.calculate(grades), DELTA);
+		assertEquals(10.0, strategy.calculate(grades), DELTA);
 	}
 
 	@Test
