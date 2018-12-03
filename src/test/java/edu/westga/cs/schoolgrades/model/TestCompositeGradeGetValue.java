@@ -1,11 +1,7 @@
 package edu.westga.cs.schoolgrades.model;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import java.util.List;
-
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +10,6 @@ class TestCompositeGradeGetValue {
 	private SimpleGrade mockGrade1;
 	private SimpleGrade mockGrade2;
 	private SimpleGrade mockGrade3;
-	private SumOfGradesStrategy mockSumGrade;
 	
 	@BeforeEach
 	public void setup() {
